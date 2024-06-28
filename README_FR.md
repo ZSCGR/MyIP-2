@@ -1,6 +1,8 @@
 # 🧰 MyIP - Une meilleure boîte à outils IP
 
-![IPCheck.ing Banner](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/gh_banner.png)
+<a href="https://trendshift.io/repositories/5332" target="_blank"><img src="https://trendshift.io/api/badge/repositories/5332" alt="jason5ng32%2FMyIP | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+
+![IPCheck.ing Banner](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/github/gh_banner.png)
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/jason5ng32/MyIP)
 ![GitHub forks](https://img.shields.io/github/forks/jason5ng32/myip)
@@ -23,8 +25,7 @@
 
 Notes: Vous pouvez utiliser ma démo gratuitement et vous pouvez également la déployer vous-même.
 
-[![Deploy with Vercel](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/Vercel.svg)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjason5ng32%2FMyIP&project-name=MyIP&repository-name=MyIP)
-[![Deploy with Docker](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/Docker.svg)](https://hub.docker.com/r/jason5ng32/myip)
+[![Deploy with Docker](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/github/Docker.svg)](https://hub.docker.com/r/jason5ng32/myip)
 
 ## 👀 Principales fonctionnalités
 
@@ -35,10 +36,11 @@ Notes: Vous pouvez utiliser ma démo gratuitement et vous pouvez également la d
 * 🛑 **Test de fuite DNS** : Affiche les données de point de terminaison DNS pour évaluer le risque de fuites DNS lors de l'utilisation de VPN ou de proxies.
 * 🚀 **Test de vitesse** : Testez la vitesse de votre réseau avec des réseaux de pointe.
 * 🚏 **Test de règles** : Teste si les paramètres de règles fonctionnent correctement avec le logiciel de proxy.
-* 🌐 **Test de latence mondiale** : Effectue des tests de latence sur des serveurs situés dans différentes régions du monde.
+* ⏱️ **Test de latence mondiale** : Effectue des tests de latence sur des serveurs situés dans différentes régions du monde.
 * 📡 **Test MTR** : Effectue des tests MTR sur des serveurs situés dans différentes régions du monde.
 * 🔦 **Résolveur DNS** : effectue la résolution DNS d'un nom de domaine à partir de plusieurs sources, obtient les résultats de la résolution en temps réel et peut être utilisé pour la détermination de la contamination.
 * 🚧 **Test de Censorship**: Vérifier si un site est bloqué dans certains pays.
+* 📓 **Recherche Whois** : Effectuer une recherche d'informations Whois pour les noms de domaine ou les adresses IP
 * 🌗 **Mode sombre** : Bascule automatiquement entre les modes sombre et clair en fonction des paramètres du système, avec une option de basculement manuel.
 * 📱 **Mode minimaliste** : Un mode optimisé pour les mobiles qui réduit la longueur de la page pour un accès rapide aux informations essentielles.
 * 🔍 **Recherche d'informations sur l'adresse IP** : Fournit un outil pour interroger des informations sur n'importe quelle adresse IP.
@@ -48,8 +50,6 @@ Notes: Vous pouvez utiliser ma démo gratuitement et vous pouvez également la d
 * 🇺🇸 🇨🇳 🇫🇷 Prise en charge de l'anglais, du chinois et du français.
 
 ## 📕 Comment utiliser
-
-Il existe 3 façons de déployer :
 
 ### Déploiement dans un environnement Node
 
@@ -61,16 +61,10 @@ Clonez le code :
 git clone https://github.com/jason5ng32/MyIP.git
 ```
 
-Installer:
+Installer & Construire :
 
 ```bash
-npm install
-```
-
-Construire:
-
-```bash
-npm run build
+npm install && npm run build
 ```
 
 Exécuter:
@@ -80,10 +74,6 @@ npm start
 ```
 
 Le programme s'exécutera sur le port 18966.
-
-### Using Vercel
-
-Cliquez sur le bouton 'Déployer sur Vercel' en haut pour terminer le déploiement.
 
 ### Using Docker
 
@@ -99,15 +89,18 @@ Vous pouvez utiliser le programme sans ajouter de variables d'environnement, mai
 
 | Nom de la variable | Requis | Valeur par défaut | Description |
 | --- | --- | --- | --- |
-| `PORT` | Non | `18966` | Le port sur lequel le programme s'exécute |
+| `BACKEND_PORT` | Non | `"11966"` | Le port d'exécution de la partie backend du programme |
+| `FRONTEND_PORT` | Non | `"18966"` | Le port d'exécution de la partie frontend du programme |
+| `SECURITY_RATE_LIMIT` | Non | `"0"` | Contrôle le nombre de requêtes qu'une adresse IP peut faire au serveur backend toutes les 60 minutes (réglé sur 0 pour aucune limite) |
+| `SECURITY_DELAY_AFTER` | Non | `"0"` | Contrôle les premières X requêtes d'une adresse IP toutes les 20 minutes qui ne sont pas soumises à des limites de vitesse, et après X requêtes, le délai augmentera |
+| `SECURITY_BLACKLIST_LOG_FILE_PATH` | Non | `"logs/blacklist-ip.log"` | Paramètre de chemin. Enregistre la liste des adresses IP qui ont déclenché la limite après que `SECURITY_RATE_LIMIT` soit activé |
 | `BING_MAP_API_KEY` | Non | `""` | Clé API pour Bing Maps, utilisée pour afficher l'emplacement de l'adresse IP sur une carte |
 | `ALLOWED_DOMAINS` | Non | `""` | Domaines autorisés pour l'accès, séparés par des virgules, utilisés pour empêcher une utilisation abusive de l'API backend |
 | `IPCHECKING_API_KEY` | Non | `""` | Clé API pour IPCheck.ing, utilisée pour obtenir des informations de géolocalisation précises sur l'adresse IP |
 | `IPINFO_API_TOKEN` | Non | `""` | Jeton API pour IPInfo.io, utilisé pour obtenir des informations de géolocalisation sur l'adresse IP via IPInfo.io |
+| `IPAPIIS_API_KEY` | Non | `""` | Clé API pour IPAPI.is, utilisée pour obtenir des informations de géolocalisation sur l'adresse IP via IPAPI.is |
 | `KEYCDN_USER_AGENT` | Non | `""` | Le nom de domaine lorsque vous utilisez KeyCDN, doit contenir le préfixe https. Utilisé pour obtenir des informations sur l'adresse IP via KeyCDN |
 | `CLOUDFLARE_API` | Non | `""` | Clé API pour Cloudflare, utilisée pour obtenir des informations sur le système AS via Cloudflare |
-| `VITE_RECAPTCHA_SITE_KEY` | Non | `""` | Clé de site reCAPTCHA de Google, utilisée pour afficher la vérification reCAPTCHA sur le frontend |
-| `RECAPTCHA_SECRET_KEY` | Non | `""` | Clé secrète reCAPTCHA de Google, utilisée pour vérifier la vérification reCAPTCHA sur le backend |
 
 ### Utilisation des variables d'environnement dans un environnement Node
 
@@ -120,17 +113,14 @@ cp .env.example .env
 Modifiez le fichier `.env`, et par exemple, ajoutez ce qui suit :
 
 ```bash
-PORT=18966
+BACKEND_PORT=11966
+FRONTEND_PORT=18966
 BING_MAP_API_KEY="YOUR_KEY_HERE"
 ALLOWED_DOMAINS="example.com"
 IPCHECKING_API="YOUR_KEY_HERE"
 ```
 
 Ensuite, redémarrez le service backend.
-
-### Utilisation des variables d'environnement dans Vercel
-
-Veuillez vous référer au contenu de `.env.example` et ajoutez-le aux variables d'environnement dans Vercel.
 
 ### Utilisation des variables d'environnement dans Docker
 
